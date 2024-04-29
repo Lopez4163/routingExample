@@ -1,8 +1,28 @@
 const { Client } = require("pg")
-const client = new Client("postgres://localhost:5432/beer_store")
 const jwt = require("jsonwebtoken")
 require("dotenv").config()
 client.connect()
+
+const client = new Client({
+  user: "beer_w4r7_user", // Username
+  host: "dpg-coo2tfv79t8c73b554dg-a.oregon-postgres.render.com", // Hostname
+  database: "beer_w4r7", // Database name
+  password: "fIgy4lHt1zZJL6JLpC3Whp9SgOVtTyYz", // Password
+  port: 5432, // Port
+  ssl: {
+    rejectUnauthorized: false, // Required for Render PostgreSQL
+  },
+})
+
+// Connect to the PostgreSQL database
+client
+  .connect()
+  .then(() => {
+    console.log("Connected to the database")
+  })
+  .catch(err => {
+    console.error("Error connecting to the database:", err)
+  })
 
 //beer queries
 const getAllBeers = async () => {
