@@ -5,8 +5,9 @@
   "main": "server.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "nodemon server.js",
-    "seed": "node ./db/seed.js"
+    "start": "npm-run-all --parallel start-server seed-db",
+    "start-server": "nodemon server.js",
+    "seed-db": "node ./db/seed.js"
   },
   "keywords": [],
   "author": "",
@@ -19,5 +20,8 @@
     "morgan": "^1.10.0",
     "nodemon": "^3.1.0",
     "pg": "^8.11.5"
+  },
+  "devDependencies": {
+    "npm-run-all": "^4.1.5"
   }
 }
