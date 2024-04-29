@@ -1,7 +1,6 @@
 const { Client } = require("pg")
 const jwt = require("jsonwebtoken")
 require("dotenv").config()
-client.connect()
 
 const client = new Client({
   user: "beer_w4r7_user", // Username
