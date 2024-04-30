@@ -2,11 +2,11 @@ const { Client } = require("pg")
 const jwt = require("jsonwebtoken")
 require("dotenv").config()
 
+const externalConnectionString = process.env.RENDER_EXTERNAL_POSTGRESQL_URL
+
+// Create a PostgreSQL client
 const client = new Client({
-  user: "beer_w4r7_user", // Username
-  host: "dpg-coo2tfv79t8c73b554dg-a.oregon-postgres.render.com", // Hostname
-  database: "beer_w4r7", // Database name
-  password: "fIgy4lHt1zZJL6JLpC3Whp9SgOVtTyYz", // Password
+  connectionString: externalConnectionString,
   ssl: {
     rejectUnauthorized: false, // Required for Render PostgreSQL
   },
