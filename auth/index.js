@@ -1,12 +1,15 @@
 const router = require("express").Router()
 const jwt = require("jsonwebtoken")
 const { Client } = require("pg")
-const client = new Client("postgres://localhost:5432/beer_store")
-client
-  .connect()
-  .then(() => console.log("Connected to the database"))
-  .catch(error => console.error("Error connecting to the database:", error))
+const externalConnectionString = process.env.RENDER_EXTERNAL_POSTGRESQL_URL
 
+// Create a PostgreSQL client
+const client = new Client({
+  connectionString: externalConnectionString,
+  ssl: {
+    rejectUnauthorized: false, // Required for Render PostgreSQL
+  },
+})
 // Register a new instructor account
 router.post("/register", async (req, res, next) => {
   try {
