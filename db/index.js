@@ -7,7 +7,6 @@ const client = new Client({
   host: "dpg-coo2tfv79t8c73b554dg-a.oregon-postgres.render.com", // Hostname
   database: "beer_w4r7", // Database name
   password: "fIgy4lHt1zZJL6JLpC3Whp9SgOVtTyYz", // Password
-  port: 5432, // Port
   ssl: {
     rejectUnauthorized: false, // Required for Render PostgreSQL
   },
